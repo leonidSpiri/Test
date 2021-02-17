@@ -6,9 +6,9 @@ public class Task1 {
         //Or a don't understand the task?
         // ok. let's do it
 
-        int[] arrThousand =new int[1000];
-        for (int i = 0; i < arrThousand.length-1; i++) {
-            arrThousand[arrThousand.length-i-1] = i;
+        int[] arrThousand = new int[1000];
+        for (int i = 0; i < arrThousand.length - 1; i++) {
+            arrThousand[arrThousand.length - i - 1] = i;
         }
         for (int i = 0; i < arrThousand.length; i++) {
             for (int j = 0; j < i; j++) {
