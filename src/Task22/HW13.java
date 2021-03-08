@@ -11,7 +11,7 @@ public class HW13 {
                     x /= 10;
                     y /= 7;
                 }
-                if (a == 4 && b == 5) System.out.printf("x = %d, y = %d\n", x, y);
+                if (a == 4 && b == 5) System.out.printf("x = %d, y = %d\n", xx, yy);
             }
         }
     }
