@@ -2,7 +2,7 @@ package Task8;
 
 public class Task4 {
     public static void main(String[] args) {
-        string slovo = "МИР";
+        /*string slovo = "МИР";
         int s = 0;
         string res = "";
         for (int i1 = 0; i1 <= 2; i1++)//1-я буква, одна из 3-х возможных
@@ -18,7 +18,7 @@ public class Task4 {
                     Console.WriteLine(s.ToString() + " " + res);
                 }
             }
-        }
+        }*/
 
     }
 }
