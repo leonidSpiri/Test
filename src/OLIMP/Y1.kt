@@ -12,8 +12,7 @@ fun main() {
         if (amountlec < reallec) {
             res = false
             break
-        }
-        else {
+        } else {
             amountlec = reallec
             res = true
         }
