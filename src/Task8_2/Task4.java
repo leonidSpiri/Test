@@ -34,6 +34,6 @@ public class Task4 {
                 }
             }
         }
-        System.out.println(result); //1440 ? 1140
+        System.out.println(result); //1440
     }
 }
