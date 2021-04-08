@@ -34,6 +34,6 @@ public class Task7 {
                 }
             }
         }
-        System.out.println(result); //821
+        System.out.println(result);
     }
 }
