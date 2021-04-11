@@ -1,6 +1,6 @@
 package Task12;
 
-public class ege12 {
+public class ege5 {
     public static void main(String[] args) {
         String stroka = "1";
         for (int i = 0; i < 25; i++) stroka += "5";

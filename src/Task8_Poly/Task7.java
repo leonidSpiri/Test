@@ -27,7 +27,7 @@ public class Task7 {
                                     if (buff.charAt(i + 1) != 'И' || buff.charAt(i + 1) != 'О') istrue = false;
                                 }
                             }
-                            for (int i = 0; i < buff.length(); i++) if (buff.charAt(i) == 'Р')r++;
+                            for (int i = 0; i < buff.length(); i++) if (buff.charAt(i) == 'Р') r++;
                             if (r < 3 && istrue) result++;
                         }
                     }
