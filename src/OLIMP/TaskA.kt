@@ -3,6 +3,9 @@ package OLIMP
 import java.util.*
 
 fun main() {
+    val a :String? = null
+    val b = "revev"
+    print(a==b)
     val array = arrayOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
             "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
             "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
@@ -11,6 +14,7 @@ fun main() {
     var base = 37
     val find = scanner.next()
     var otvet = 0
+
     for (i in 2..36) {
         var buff = number
         val stack = ArrayList<String>()
