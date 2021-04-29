@@ -21,10 +21,4 @@ public class Task5 {
     /*1 194481 23 441
     2 195364 25 442
     3 196249 1 443*/
-    static boolean isprosote(int n) {
-        for (int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) return false;
-        }
-        return true;
-    }
 }
