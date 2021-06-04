@@ -1,4 +1,4 @@
-package OLIMP;
+package Trash;
 
 public class Test {
     public static void main(String[] args) {
