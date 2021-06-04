@@ -1,4 +1,4 @@
-package OLIMP
+package Trash
 
 import java.util.*
 
