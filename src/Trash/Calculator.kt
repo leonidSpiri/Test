@@ -6,10 +6,36 @@ import java.util.*
 fun main() {
     val scanner = Scanner(System.`in`)
     val stroka = "1 + 2 * ( 3 + 4 / 2 - ( 1 + 2 ) ) * 2 + 1"
-    val chisloStack = ArrayDeque<Int>()
-    val znakStack = ArrayDeque<Char>()
-
+   val parser = Parser()
+    val expression = parser.calculation(stroka)
+    if (parser.flag){
+        for (x in expression) print("$x ")
+        println()
+        println(calculation(expression))
+    }
 }
+
+private fun calculation(postfix: List<String>): Double {
+    val stack = ArrayDeque<Double>()
+    for (x: String in postfix) {
+        if (x == "+") stack.push(stack.pop() + stack.pop())
+       else if (x == "-") {
+            val b = stack.pop()
+            val a = stack.pop()
+            stack.push(a - b)
+        }
+       else if (x == "*") stack.push(stack.pop() * stack.pop())
+       else if (x == "/") {
+            val b = stack.pop()
+            val a = stack.pop()
+            stack.push(a / b)
+        }
+       else if (x == "u-") stack.push(-stack.pop())
+        else stack.push(x.toDouble())
+    }
+    return stack.pop()
+}
+
 
 class Parser {
     private var operators = "+-*/"
@@ -18,7 +44,7 @@ class Parser {
 
     private fun isDelimiter(enter: String): Boolean {
         if (enter.length != 1) return false
-        for (i in 0..delimiters.length) {
+        for (i in 0..delimiters.lastIndex) {
             if (enter[0] == delimiters[i]) return true
         }
         return false
@@ -26,7 +52,7 @@ class Parser {
 
     private fun isOperator(enter: String): Boolean {
         if (enter == "u-") return true
-        for (i in 0..operators.length) {
+        for (i in 0..operators.lastIndex) {
             if (enter[0] == operators[i]) return true
         }
         return false
@@ -38,12 +64,51 @@ class Parser {
         return if (enter == "*" || enter == "/") 3 else 4
     }
 
-    fun chet(enter: String): List<String> {
+    fun calculation(enter: String): List<String> {
         val postfix = ArrayList<String>()
         val stack = ArrayDeque<String>()
+        val tokenizer = StringTokenizer(enter, delimiters, true)
+        var previous = ""
+        var current = ""
+        while (tokenizer.hasMoreTokens()) {
+            current = tokenizer.nextToken()
+            if (current == "") continue
+            if (isDelimiter(current)) {
+                if (current == "(") stack.push(current)
+                else if (current == ")") {
+                    while (stack.peek() != "(") {
+                        postfix.add(stack.pop())
+                        if (stack.isEmpty()) {
+                            flag = false
+                            println("1Скобки расставленны неправильно, или имется ошибка в коде. (Второе исключенно)")
+                            return postfix
+                        }
+                    }
+                    stack.pop()
+                    if (!stack.isEmpty()) postfix.add(stack.pop())
+                } else {
+                    if (current == "-" && (previous == "" || (isDelimiter(previous) && previous != ")"))) current = "u-"
+                    else {
+                        while (!stack.isEmpty() && (priority(current) <= priority(stack.peek()))) {
+                            postfix.add(stack.pop())
+                        }
+                    }
+                    stack.push(current)
+                }
+            } else {
+                postfix.add(current)
+            }
+            previous = current
+        }
 
-
-
+        while (!stack.isEmpty()) {
+            if (isOperator(stack.peek())) postfix.add(stack.pop())
+            else {
+                flag = false
+                println("2Скобки расставленны неправильно, или имется ошибка в коде. (Второе исключенно)")
+                return postfix
+            }
+        }
         return postfix
     }
 }

@@ -106,7 +106,8 @@ public class Test {
                     Double tmp = stack.pop();
                     stack.push(tmp * tmp * tmp);
                 } else if (x.equals("pow10")) stack.push(Math.pow(10, stack.pop()));
-                else if (x.equals("+")) stack.push(stack.pop() + stack.pop());
+                else
+                    if (x.equals("+")) stack.push(stack.pop() + stack.pop());
                 else if (x.equals("-")) {
                     Double b = stack.pop(), a = stack.pop();
                     stack.push(a - b);
