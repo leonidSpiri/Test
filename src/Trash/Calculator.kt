@@ -5,10 +5,10 @@ import java.util.*
 
 fun main() {
     val scanner = Scanner(System.`in`)
-    val stroka = "1 + 2 * ( 3 + 4 / 2 - ( 1 + 2 ) ) * 2 + 1"
-   val parser = Parser()
+    val stroka = scanner.nextLine()
+    val parser = Parser()
     val expression = parser.calculation(stroka)
-    if (parser.flag){
+    if (parser.flag) {
         for (x in expression) print("$x ")
         println()
         println(calculation(expression))
@@ -19,18 +19,16 @@ private fun calculation(postfix: List<String>): Double {
     val stack = ArrayDeque<Double>()
     for (x: String in postfix) {
         if (x == "+") stack.push(stack.pop() + stack.pop())
-       else if (x == "-") {
+        else if (x == "-") {
             val b = stack.pop()
             val a = stack.pop()
             stack.push(a - b)
-        }
-       else if (x == "*") stack.push(stack.pop() * stack.pop())
-       else if (x == "/") {
+        } else if (x == "*") stack.push(stack.pop() * stack.pop())
+        else if (x == "/") {
             val b = stack.pop()
             val a = stack.pop()
             stack.push(a / b)
-        }
-       else if (x == "u-") stack.push(-stack.pop())
+        } else if (x == "u-") stack.push(-stack.pop())
         else stack.push(x.toDouble())
     }
     return stack.pop()
@@ -72,7 +70,7 @@ class Parser {
         var current = ""
         while (tokenizer.hasMoreTokens()) {
             current = tokenizer.nextToken()
-            if (current == "") continue
+            if (current == " ") continue
             if (isDelimiter(current)) {
                 if (current == "(") stack.push(current)
                 else if (current == ")") {
@@ -80,7 +78,7 @@ class Parser {
                         postfix.add(stack.pop())
                         if (stack.isEmpty()) {
                             flag = false
-                            println("1Скобки расставленны неправильно, или имется ошибка в коде. (Второе исключенно)")
+                            println("Скобки расставленны неправильно, или имется ошибка в коде. (Второе исключенно)")
                             return postfix
                         }
                     }
@@ -105,7 +103,7 @@ class Parser {
             if (isOperator(stack.peek())) postfix.add(stack.pop())
             else {
                 flag = false
-                println("2Скобки расставленны неправильно, или имется ошибка в коде. (Второе исключенно)")
+                println("Скобки расставленны неправильно, или имется ошибка в коде. (Второе исключенно)")
                 return postfix
             }
         }
