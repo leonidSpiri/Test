@@ -9,25 +9,24 @@ fun main() {
     val parser = Parser()
     val expression = parser.calculation(stroka)
     if (parser.flag) {
-        for (x in expression) print("$x ")
-        println()
-        println(calculation(expression))
+        // for (x in expression) print("$x ")
+        println(calculation(expression).toInt())
     }
 }
 
 private fun calculation(postfix: List<String>): Double {
     val stack = ArrayDeque<Double>()
-    for (x: String in postfix) {
+    for (x in postfix) {
         if (x == "+") stack.push(stack.pop() + stack.pop())
         else if (x == "-") {
-            val b = stack.pop()
-            val a = stack.pop()
-            stack.push(a - b)
+            val b = stack.pop().toDouble()
+            val a = stack.pop().toDouble()
+            stack.push((a - b))
         } else if (x == "*") stack.push(stack.pop() * stack.pop())
         else if (x == "/") {
-            val b = stack.pop()
-            val a = stack.pop()
-            stack.push(a / b)
+            val b = stack.pop().toDouble()
+            val a = stack.pop().toDouble()
+            stack.push((a / b))
         } else if (x == "u-") stack.push(-stack.pop())
         else stack.push(x.toDouble())
     }
@@ -67,7 +66,7 @@ class Parser {
         val stack = ArrayDeque<String>()
         val tokenizer = StringTokenizer(enter, delimiters, true)
         var previous = ""
-        var current = ""
+        var current: String
         while (tokenizer.hasMoreTokens()) {
             current = tokenizer.nextToken()
             if (current == " ") continue
