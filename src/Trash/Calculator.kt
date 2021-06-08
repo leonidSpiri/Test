@@ -1,5 +1,6 @@
 package Trash
 
+
 import java.util.*
 
 
@@ -9,26 +10,32 @@ fun main() {
     val parser = Parser()
     val expression = parser.calculation(stroka)
     if (parser.flag) {
-        // for (x in expression) print("$x ")
-        println(calculation(expression).toInt())
+        //for (x in expression) print("$x ")
+        val calc = calculation(expression).toInt()
+        if (calc == Int.MAX_VALUE || calc == Int.MIN_VALUE) println(0)
+        else println(calc)
     }
 }
 
 private fun calculation(postfix: List<String>): Double {
     val stack = ArrayDeque<Double>()
     for (x in postfix) {
-        if (x == "+") stack.push(stack.pop() + stack.pop())
-        else if (x == "-") {
-            val b = stack.pop().toDouble()
-            val a = stack.pop().toDouble()
-            stack.push((a - b))
-        } else if (x == "*") stack.push(stack.pop() * stack.pop())
-        else if (x == "/") {
-            val b = stack.pop().toDouble()
-            val a = stack.pop().toDouble()
-            stack.push((a / b))
-        } else if (x == "u-") stack.push(-stack.pop())
-        else stack.push(x.toDouble())
+        when (x) {
+            "+" -> stack.push(stack.pop() + stack.pop())
+            "-" -> {
+                val b = stack.pop().toDouble()
+                val a = stack.pop().toDouble()
+                stack.push((a - b))
+            }
+            "*" -> stack.push(stack.pop() * stack.pop())
+            "/" -> {
+                val b = stack.pop().toDouble()
+                val a = stack.pop().toDouble()
+                stack.push((a / b))
+            }
+            "u-" -> stack.push(-stack.pop())
+            else -> stack.push(x.toDouble())
+        }
     }
     return stack.pop()
 }
