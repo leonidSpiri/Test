@@ -13,7 +13,7 @@ public class Stat3 {
                 }
 
             }
-            if (flag) System.out.println(a); //30
+            if (flag) System.out.println(a); //14
         }
     }
 }
