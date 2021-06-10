@@ -1,7 +1,6 @@
 package Task15;
 
 public class Polkov1 {
-    //(ДЕЛ(x, A) ∧ ДЕЛ(x, 24) ∧ ¬ДЕЛ(x, 16)) → ¬ДЕЛ(x, A)
     public static void main(String[] args) {
         for (int a = 100; a > 0; a--) {
             boolean flag = true;
