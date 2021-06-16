@@ -1,7 +1,6 @@
 package Task15;
 
 public class Stat3 {
-    //https://inf-ege.sdamgia.ru/problem?id=33517
     public static void main(String[] args) {
         for (int a = 1; a < 20; a++) {
             boolean flag = true;
