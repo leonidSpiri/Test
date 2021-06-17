@@ -10,6 +10,7 @@ public class Stat4 {
                     int vtorDel = i / j;
                     if (vtorDel % 2 == 1 && j != vtorDel)
                         del++;
+                    if (del > 5) break;
                 }
             }
             if (del == 5) System.out.println(i);
