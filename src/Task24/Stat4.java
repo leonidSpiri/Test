@@ -1,0 +1,63 @@
+package Task24;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Stat4 {
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner in = new Scanner(new File("Texts/stat4_24.txt"));
+        ArrayList<String> arrayList = new ArrayList<>();
+        while (in.hasNext()) {
+            String s = in.nextLine();
+            if (s.contains("G")) {
+                arrayList.add(s);
+            }
+        }
+        int buff = Integer.MAX_VALUE;
+        String ff = "";
+        for (int i = 0; i < arrayList.size(); i++) {
+            String s = arrayList.get(i);
+            int g = 0;
+            for (int j = 0; j < s.length(); j++) {
+                if (s.charAt(j) == 'G') g++;
+            }
+            if (g < buff) {
+                buff = g;
+                ff = s;
+            }
+        }
+        char[] chars = ff.toCharArray();
+        Arrays.sort(chars);
+        System.out.println(chars);//T
+    }
+}
+/*AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+EEEEEEEEEEEEEEEEEEEEEEEEEEE
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+GGGGGGGGGGGGGGGGGG
+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+OOOOOOOOOOOOOOOOOOOOOOOOOOO
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ
+RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+VVVVVVVVVVVVVVVVVVVVVVVVV
+WWWWWWWWWWWWWWWWWWWWWWWWWWWW
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+*/
