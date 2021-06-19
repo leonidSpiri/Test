@@ -1,11 +1,11 @@
-package Task25;
+package Task26;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Stat26_5 {
+public class Stat4 {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner in = new Scanner(new File("Texts/stat4-26.txt"));
         ArrayList<Long> arrayList = new ArrayList<Long>();
