@@ -1,8 +1,8 @@
-package Trash;
+package Task23;
 
 import java.util.ArrayList;
 
-public class stat5_23 {
+public class Stat5 {
     public static void main(String[] args) {
         ArrayList<Integer> array = new ArrayList<>();
         for (int i1 = 1; i1 <= 2; i1++) {
