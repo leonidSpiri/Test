@@ -6,7 +6,7 @@ public class Task1 {
     public static void main(String[] args) {
         String slovo = "0123456789ABCDEF";
         ArrayList<String> result = new ArrayList<>();
-        for (int i1 = 0; i1 < slovo.length(); i1++) {
+        for (int i1 = 1; i1 < slovo.length(); i1++) {
             for (int i2 = 0; i2 < slovo.length(); i2++) {
                 for (int i3 = 0; i3 < slovo.length(); i3++) {
                     for (int i4 = 0; i4 < slovo.length(); i4++) {
